@@ -1,0 +1,23 @@
+# Binaries
+voltspool
+voltspool-cli
+voltspool-cli.exe
+voltspool-gui
+print-agent-gui
+tmp/
+
+# Private keys & certs (auto-generated on first run)
+*.pem
+*.key
+ca.pem
+ca.key
+cert.pem
+key.pem
+
+# macOS
+.DS_Store
+
+# Generated files
+receipt_*.pdf
+logo.bin
+tasks.json
