@@ -51,19 +51,18 @@ jobs:
         with:
           go-version: "1.23"
 
-      - name: Install Linux cross-compile tools
-        if: matrix.os == 'ubuntu-latest' && matrix.goarch == 'arm64'
+      - name: Install Linux build dependencies
+        if: matrix.os == 'ubuntu-latest'
         run: |
           sudo apt-get update
-          sudo apt-get install -y gcc-aarch64-linux-gnu
-          echo "CC=aarch64-linux-gnu-gcc" >> $GITHUB_ENV
-
-      - name: Install Windows cross-compile tools
-        if: matrix.os == 'ubuntu-latest' && matrix.goarch == 'amd64' && matrix.goos == 'windows'
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y gcc-mingw-w64
-          echo "CC=x86_64-w64-mingw32-gcc" >> $GITHUB_ENV
+          sudo apt-get install -y \
+            libgl1-mesa-dev \
+            libx11-dev \
+            libxcursor-dev \
+            libxrandr-dev \
+            libxinerama-dev \
+            libxi-dev \
+            libxxf86vm-dev
 
       - name: Build
         env:
