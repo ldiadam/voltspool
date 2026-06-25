@@ -69,7 +69,7 @@ Configure the agent using the following environment variables. If left undefined
 
 ## Installation & Build Commands
 
-Ensure you have **Go 1.21 or later** installed.
+Ensure you have **Go 1.23 or later** installed.
 
 *Note: Fyne requires CGO and graphics libraries on the compilation host system. Build on the target OS (macOS for Mac, Windows for Windows).*
 
@@ -87,11 +87,29 @@ go run ./cmd/print-agent-gui
 #### Compile Standalone Native GUI App:
 ```bash
 # Build for macOS (produces native Mac app)
-go build -o print-agent-gui ./cmd/print-agent-gui
+go build -o voltspool ./cmd/print-agent-gui
 
-# Build on Windows for Windows (produces print-agent-gui.exe)
-go build -o print-agent-gui.exe ./cmd/print-agent-gui
+# Build on Windows for Windows (produces voltspool.exe)
+go build -o voltspool.exe ./cmd/print-agent-gui
 ```
+
+---
+
+## Release
+
+Releases are automated via GitHub Actions. To create a new release:
+
+```bash
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+This triggers the `release.yml` workflow which builds binaries for:
+- **macOS** (ARM64 + Intel)
+- **Windows** (AMD64)
+- **Linux** (AMD64 + ARM64)
+
+Binaries are attached to the GitHub Release automatically.
 
 ---
 
